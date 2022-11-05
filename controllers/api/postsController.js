@@ -22,17 +22,27 @@ router.get('/:id', async(req,res)=>{
 })
 
 router.post('/', async(req,res)=>{
+    if (!req.session.activeUser){
+        return res.status(401).json({message: "not logged in"});
+    }
     try{
-        const newpostData = await Post.create(req.body);
-        res.json(newpostData);
+        const newpostData = await Post.create({
+            title:req.body.title,
+            body:req.body.body,
+            UserId: req.session.activeUser.id
+        });
+        res.status(201).json(newpostData);
     }catch(err){
-        res.json({message:err.message})
+        res.status(500).json({message:err.message})
     }
 })
 
 router.delete('/:id', async(req,res)=>{
+    if (!req.session.activeUser){
+        return res.status(401).json({message: "not logged in"});
+    }
     try{
-        const delData = await Post.destroy({where:{id:req.params.id}})
+        const delData = await Post.destroy({where:{id:req.params.id, UserId:req.session.activeUser.id}})
         res.json(delData)
     }catch(err){
         res.json({message:err.message})

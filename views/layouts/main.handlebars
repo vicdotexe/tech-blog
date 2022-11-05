@@ -5,9 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    {{{body}}}
+<body class="h-[calc(100vh-100px)] bg-slate-300">
+    <header class="flex flex-col justify-around items-center bg-slate-700 h-[100px]">
+        <h1 class="rounded-xl text-4xl text-white">Tech-Blog</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            {{#if signedIn}}
+            <a href="/logout">Logout</a>
+            {{else}}
+            <a href="/login">Login</a>
+            {{/if}}
+        </nav>
+        
+    </header>
+    
+    <main class="h-full">
+        <h1 class="text-lg text-center">{{title}}</h1>
+            {{{body}}}
+    </main>
+
 </body>
 </html>

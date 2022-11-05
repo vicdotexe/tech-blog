@@ -1,0 +1,12 @@
+<div class="flex flex-col justify-center items-center w-full">
+        {{#each posts as | post |}}
+        <div class="flex flex-col w-5/6 justify-center items-center rounded-lg bg-slate-600 m-2 p-2">
+            {{> postCard post}}
+            <div>
+                <button class="btn">Edit</button>
+                <button class="btn">Delete</button>
+            </div>
+
+        </div>
+        {{/each}}
+</div>
