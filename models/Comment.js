@@ -6,7 +6,7 @@ class Comment extends Model {}
 Comment.init({
     // add properites here, ex:
     body: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull:false
     },
     date:{

@@ -1,5 +1,17 @@
 const sequelize = require("../config/connection");
 const {User,Post,Comment} = require("../models/");
+const LoremIpsum = require('lorem-ipsum').LoremIpsum;
+
+const lorem = new LoremIpsum({
+    sentencesPerParagraph: {
+      max: 6,
+      min: 2
+    },
+    wordsPerSentence: {
+      max: 16,
+      min: 4
+    }
+  });
 
 const seed = async ()=> {
     await sequelize.sync({force:true});
@@ -24,9 +36,11 @@ const seed = async ()=> {
     const posts = [];
     for (let i = 0; i < 15; i++){
         var randUserId = Math.floor(Math.random()*3) +1
+        var title = lorem.generateWords((i%3)+1);
+        title = title[0].toUpperCase() + title.substring(1);
         posts.push({
-            title: `Title ${i}`,
-            body: `post body ${i}`,
+            title: title,
+            body: lorem.generateParagraphs(2),
             UserId: randUserId
         })
     }
@@ -38,7 +52,7 @@ const seed = async ()=> {
         var randPostId = Math.floor(Math.random()*15) + 1;
         var randUserId = Math.floor(Math.random()*3) +1
         comments.push({
-            body: `post body ${i}`,
+            body: lorem.generateParagraphs(2),
             PostId: randPostId,
             UserId: randUserId
         })

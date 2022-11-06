@@ -25,23 +25,27 @@ router.get('/:id', async(req,res)=>{
 router.post('/', async(req,res)=>{
     try{
         const newUserData = await User.create(req.body);
-        res.json(newUserData);
+        req.session.activeUser = {
+            username:req.body.username,
+            id: newUserData.id
+        }
+        res.status(201).json(newUserData);
     }catch(err){
-        res.json({message:err.message})
+        res.status(500).json({message:"That username is taken."})
     }
 })
 
 router.post('/login', async(req,res)=>{
     const user = await User.findOne({where:{username:req.body.username}});
     if (!user){
-        return res.status(401).json({message:"invalid credentials"});
+        return res.status(401).json({message:"Invalid Credentials."});
     }
     const match = bcrypt.compareSync(req.body.password, user.password);
     console.log(user.password);
     console.log(match);
 
     if (!match){
-        return res.status(401).json({message:"invalid credentials"});
+        return res.status(401).json({message:"Invalid Credentials."});
     }
     req.session.activeUser = {
         username: req.body.username,

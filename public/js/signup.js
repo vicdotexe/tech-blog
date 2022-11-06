@@ -10,8 +10,12 @@ function onSigninPressed(e){
     if (!pw || !username){
         return;
     }
+    if (pw.length < 8){
+        alert('Password must be atleast 8 characters.');
+        return;
+    }
 
-    fetch("/api/users/login", {
+    fetch("/api/users", {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -28,10 +32,9 @@ function onSigninPressed(e){
         return response.json();
     }).then(data=>{
         if (data){
-            alert(data.message);
+            alert(data.message)
         }
-
-    });
+    })
 }
 
 signInButton.addEventListener("click", onSigninPressed);

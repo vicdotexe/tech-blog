@@ -37,6 +37,26 @@ router.post('/', async(req,res)=>{
     }
 })
 
+router.put('/:id', async(req,res)=>{
+    if (!req.session.activeUser){
+        return res.status(401).json({message: "not logged in"});
+    }
+    try{
+        const update =  await Post.update(req.body, {
+            where:{
+                id:req.params.id,
+                UserId:req.session.activeUser.id
+            }
+        });
+        if (!update){
+            return res.status(401).json({message:"This is not your post. Or the post no longer exists."})
+        }
+        return res.json(update);
+    }catch(err){
+        res.status(500).json({message:err.message})
+    }
+})
+
 router.delete('/:id', async(req,res)=>{
     if (!req.session.activeUser){
         return res.status(401).json({message: "not logged in"});

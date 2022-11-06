@@ -14,7 +14,7 @@
         <nav>
             <a href="/">Home</a>
             <a href="/dashboard">Dashboard</a>
-            {{#if signedIn}}
+            {{#if activeUser}}
             <a href="/logout">Logout</a>
             {{else}}
             <a href="/login">Login</a>
@@ -23,7 +23,7 @@
         
     </header>
     
-    <main class="h-full">
+    <main class="h-full flex flex-col">
         <h1 class="text-lg text-center">{{title}}</h1>
             {{{body}}}
     </main>

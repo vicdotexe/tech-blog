@@ -1,0 +1,21 @@
+<div class="flex flex-col justify-center items-center w-full">
+
+        <div class="flex flex-col w-5/6 justify-center items-center rounded-lg bg-slate-600 m-2 p-2">
+            <div class="flex flex-col w-full bg-slate-500 rounded-lg m-2 p-2">
+                <h1 class="text-white text-lg font-bold">
+                    <input id="titleInput" class="postInput" placeholder="Title">
+                </h1>
+                
+                <p class="bg-slate-400 rounded p-2 mt-2 text-white">
+                    <textarea id="bodyInput" class="postInput h-64 w-full placeholder-gray-300" placeholder="Write your post content here."></textarea>
+
+                </p>
+            </div>
+            <div>
+                <button class="btn bg-slate-700" id="confirmButton">Confirm</button>
+                <button class="btn bg-slate-700" id="cancelButton">Cancel</button>
+            </div>
+
+        </div>
+</div>
+<script src="/js/edit.js" postId="{{post.id}}"></script>

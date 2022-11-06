@@ -5,12 +5,26 @@ nav a{
     font-size: large;
 }
 
+
 .btn {
     border-radius: 5px;
-    border: 1px solid black;
     padding:5px 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.btn:hover{
+    filter:  contrast(180%);
 }
 
 input {
     background: rgba(255,255,255,.8);
+}
+
+.postInput{
+    border: 1px dashed rgba(255,255,255,.5);
+    border-radius: 5px;
+    background: rgba(0,0,0,0);
+    padding: 5px;
+    outline: none;
 }
