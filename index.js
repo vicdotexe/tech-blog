@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 const session = require("express-session")
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Set up the Express App
 const app = express();
@@ -18,8 +19,11 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie:{
-        maxAge:2*60*60*1000
-    }
+        maxAge:2*60*60*1000 // 2 hour expiration
+    },
+    store: new SequelizeStore({
+        db:sequelize
+    })
 }))
 
 // Set the static directory
