@@ -55,7 +55,7 @@ router.get('/signup', (req,res)=>{
 
 router.get('/logout', (req,res)=>{
     req.session.activeUser = null;
-    res.redirect('/login');
+    res.redirect('/');
 })
 
 router.get('/newpost', (req,res)=>{

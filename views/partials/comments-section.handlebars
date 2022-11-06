@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center items-center">
-    <button class="viewComment" class="self-start" data-id="{{id}}">View Comments ({{Comments.length}})</button>
+    <button class="btnsm bg-slate-700 viewComment self-start" data-id="{{id}}">View Comments ({{Comments.length}})</button>
 
     <div class="commentContainer flex flex-col justify-center items-center w-11/12 hidden" data-id="{{id}}">
         {{#each Comments}}
@@ -9,6 +9,6 @@
                 <h4 class="text-end text-sm">- {{createdAt}}</h4>
             </div>
         {{/each}}
-        <button class="hideComment" data-id="{{id}}">Hide Comments</button>
+        <button class="btn hideComment bg-slate-700" data-id="{{id}}">Hide Comments</button>
     </div>
 </div>

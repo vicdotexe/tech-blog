@@ -1,0 +1,19 @@
+<div class="flex flex-col justify-center items-center">
+    <button class="btnsm bg-slate-700 replyButton self-start" data-id="{{id}}">Reply</button>
+
+    <div class="replyContainer flex flex-col justify-center items-center w-11/12 hidden" data-id="{{id}}">
+
+
+            <div class="flex flex-col w-full bg-slate-500 rounded-lg">
+                <p class="bg-slate-400 rounded p-2 mt-2 text-white">
+                    <textarea id="bodyInput" class="postInput w-full placeholder-gray-300 h-24" placeholder="Write your reply here."></textarea>
+                </p>
+            </div>
+            <div class="mt-2">
+                <button class="btn sendReplyButton bg-slate-700">Send Reply</button>
+                <button class="btn hideReplyButton bg-slate-700" data-id="{{id}}">Cancel</button>
+            </div>
+
+        
+    </div>
+</div>

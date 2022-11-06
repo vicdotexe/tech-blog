@@ -13,6 +13,18 @@ nav a{
     color: white;
 }
 
+.btnsm {
+    border-radius: 4px;
+    padding:4px 8px;
+    font-size: small;
+    font-weight: bold;
+    color: white;
+}
+
+.btnsm:hover{
+    filter:  contrast(180%);
+}
+
 .btn:hover{
     filter:  contrast(180%);
 }
