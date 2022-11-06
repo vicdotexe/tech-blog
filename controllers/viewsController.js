@@ -1,18 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const {Post,User} = require('../models');
+const {Post,User, Comment} = require('../models');
 const { route } = require('./api');
 
 
 // the home route
 router.get('/home', async(req,res)=>{
     let postsData = await Post.findAll({
-        include:[User],
+        include:[User, {
+            model:Comment,
+            include: User
+        }],
         order:[['createdAt','DESC']]
     });
-    let plainPosts = postsData.map(post=>{return post.get({plain:"plain"})})
-    console.table(plainPosts);
-    res.render('home', {title:"Home", activeUser:req.session.activeUser, posts:plainPosts})
+    // let plainPosts = postsData.map(post=>{return post.get({plain:"plain"})})
+    // for (let i = 0; i < plainPosts.length; i++){
+
+    // }
+    //console.log(JSON.parse(JSON.stringify(postsData)));
+    // for(let i = 0; i < postsData.length; i++){
+    //     for(j = 0; j < postsData[i].Comments.length; j++){
+    //         postsData[i].Comments[j] = postsData[i].Comments[j].get({plain:true})
+    //     }
+    // }
+    const plain = JSON.parse(JSON.stringify(postsData))
+
+    console.log(plain);
+    //console.log(plainPosts)
+    res.render('home', {title:"Home", activeUser:req.session.activeUser, posts:plain})
 })
 
 // the dashboard route (redirects to login route if not logged in)
@@ -22,7 +37,7 @@ router.get('/dashboard', async(req,res)=>{
     }
     let postsData = await Post.findAll({
         where:{UserId:req.session.activeUser.id},
-        include:[User],
+        include:[User, Comment],
         order:[['createdAt','DESC']]
     });
     let plainPosts = postsData.map(post=>{return post.get({plain:"plain"})})

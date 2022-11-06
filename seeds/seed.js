@@ -40,7 +40,7 @@ const seed = async ()=> {
         title = title[0].toUpperCase() + title.substring(1);
         posts.push({
             title: title,
-            body: lorem.generateParagraphs(2),
+            body: lorem.generateParagraphs(1),
             UserId: randUserId
         })
     }
@@ -52,7 +52,7 @@ const seed = async ()=> {
         var randPostId = Math.floor(Math.random()*15) + 1;
         var randUserId = Math.floor(Math.random()*3) +1
         comments.push({
-            body: lorem.generateParagraphs(2),
+            body: lorem.generateParagraphs(1),
             PostId: randPostId,
             UserId: randUserId
         })

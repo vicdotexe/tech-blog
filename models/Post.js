@@ -13,7 +13,8 @@ Post.init({
     body: {
         type: DataTypes.TEXT,
         allowNull:false
-    },                createdAt: {
+    },                
+    createdAt: {
         type: DataTypes.DATE,                 
       get() {
             return moment(this.getDataValue('createdAt')).format('DD/MM/YYYY h:mm:ss');
