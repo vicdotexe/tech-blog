@@ -6,7 +6,12 @@ function show(e){
     const id = e.target.getAttribute("data-id");
     const container = [].find.call(allContainers, x=>x.getAttribute("data-id") == id);
     if (container){
-        container.classList.remove("hidden");
+        if (container.classList.contains("hidden")){
+            container.classList.remove("hidden");
+        }else{
+            container.classList.add("hidden");
+        }
+        
     }
 }
 
