@@ -36,7 +36,7 @@ const seed = async ()=> {
     const posts = [];
     for (let i = 0; i < 15; i++){
         var randUserId = Math.floor(Math.random()*3) +1
-        var title = lorem.generateWords((i%3)+1);
+        var title = lorem.generateWords((i%3)+2);
         title = title[0].toUpperCase() + title.substring(1);
         posts.push({
             title: title,

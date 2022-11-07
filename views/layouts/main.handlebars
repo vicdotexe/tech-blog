@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="h-[calc(100vh-100px)] bg-slate-300">
-    <header class="flex flex-col justify-around items-end bg-slate-700 h-[100px]">
+    <header class="flex flex-col justify-around items-end bg-slate-700 h-[100px] pr-3">
         <h1 class="text-4xl text-white">Tech-Blog</h1>
+        {{#if activeUser}}
+        <h3 class="mt-1 text-slate-300">Logged in as <span class="font-bold text-white">{{activeUser.username}}</span></h3>
+        {{/if}}
         <nav>
             <a href="/">Home</a>
             <a href="/dashboard">Dashboard</a>
