@@ -21,9 +21,16 @@ router.get('/:id', async(req,res)=>{
     }
 })
 
-router.post('/', async(req,res)=>{
+router.post('/:id', async(req,res)=>{
+    if (!req.session.activeUser){
+        return res.status(401).json({message:"Must be logged in to comment."})
+    }
     try{
-        const newcommentData = await Comment.create(req.body);
+        const newcommentData = await Comment.create({
+            body:req.body.body,
+            UserId: req.session.activeUser.id,
+            PostId: req.params.id
+        });
         res.json(newcommentData);
     }catch(err){
         res.json({message:err.message})

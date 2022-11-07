@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="h-[calc(100vh-100px)] bg-slate-300">
-    <header class="flex flex-col justify-around items-center bg-slate-700 h-[100px]">
-        <h1 class="rounded-xl text-4xl text-white">Tech-Blog</h1>
+    <header class="flex flex-col justify-around items-end bg-slate-700 h-[100px]">
+        <h1 class="text-4xl text-white">Tech-Blog</h1>
         <nav>
             <a href="/">Home</a>
             <a href="/dashboard">Dashboard</a>
@@ -24,7 +24,7 @@
     </header>
     
     <main class="h-full flex flex-col">
-        <h1 class="text-lg text-center">{{title}}</h1>
+        <h1 class="text-xl text-white font-bold text-center bg-gradient-to-b from-slate-700 to-slate-500 px-5 pb-2 self-center rounded-b-xl">{{title}}</h1>
             {{{body}}}
     </main>
 

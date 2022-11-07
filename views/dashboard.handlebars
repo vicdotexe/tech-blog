@@ -1,14 +1,16 @@
 <div class="flex flex-col justify-center items-center w-full">
-    <a class="btn p-2 m-2 text-xl text-white bg-slate-700 border border-black rounded" href="/newPost">Create New Post</a>
+    <a class="btnlg p-2 m-2 text-xl text-white border" href="/newPost">Create New Post</a>
         {{#each posts as | post |}}
-        <div class="flex flex-col w-5/6 justify-center items-center rounded-lg bg-slate-500 m-2 p-2">
+        <div class="flex flex-col w-5/6 justify-center items-center rounded-lg bg-slate-400 m-2 p-2 shadow-lg">
             {{> postCard post}}
             <div>
-                <button class="btn editButton bg-slate-700" data-postId="{{post.id}}">Edit</button>
-                <button class="btn deleteButton bg-slate-700" data-postId="{{post.id}}">Delete</button>
+                <button class="btn editButton" data-postId="{{post.id}}">Edit</button>
+                <button class="btn deleteButton" data-postId="{{post.id}}">Delete</button>
             </div>
 
         </div>
         {{/each}}
 </div>
 <script src="/js/dashboard.js"></script>
+<script src="/js/commentSection.js"></script>
+<script src="/js/replySection.js"></script>

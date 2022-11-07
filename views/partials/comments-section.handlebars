@@ -1,14 +1,14 @@
 <div class="flex flex-col justify-center items-center">
-    <button class="btnsm bg-slate-700 viewComment self-start" data-id="{{id}}">View Comments ({{Comments.length}})</button>
+    <button class="btnsm  viewComment self-start" data-id="{{id}}">View Comments ({{Comments.length}})</button>
 
     <div class="commentContainer flex flex-col justify-center items-center w-11/12 hidden" data-id="{{id}}">
         {{#each Comments}}
-            <div class="bg-slate-300 rounded m-2 p-2 w-full">
-                <h4><span class="font-bold">{{User.username}}</span> commented:</h4>
-                <p class="mt-1">&nbsp&nbsp&nbsp&nbsp&nbsp{{body}}</p>
-                <h4 class="text-end text-sm">- {{createdAt}}</h4>
+            <div class="bg-slate-500 rounded m-2 p-2 w-full">
+                <h4 class="text-slate-200 text-sm mb-2"><span class="font-bold">{{User.username}}</span> commented:</h4>
+                <p class="text-white">&nbsp&nbsp&nbsp&nbsp&nbsp{{body}}</p>
+                <h4 class="text-end text-xs text-slate-300">- {{createdAt}}</h4>
             </div>
         {{/each}}
-        <button class="btn hideComment bg-slate-700" data-id="{{id}}">Hide Comments</button>
+        <button class="btnsm hideComment" data-id="{{id}}">Hide Comments</button>
     </div>
 </div>

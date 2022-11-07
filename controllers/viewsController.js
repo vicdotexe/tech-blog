@@ -13,20 +13,8 @@ router.get('/home', async(req,res)=>{
         }],
         order:[['createdAt','DESC']]
     });
-    // let plainPosts = postsData.map(post=>{return post.get({plain:"plain"})})
-    // for (let i = 0; i < plainPosts.length; i++){
 
-    // }
-    //console.log(JSON.parse(JSON.stringify(postsData)));
-    // for(let i = 0; i < postsData.length; i++){
-    //     for(j = 0; j < postsData[i].Comments.length; j++){
-    //         postsData[i].Comments[j] = postsData[i].Comments[j].get({plain:true})
-    //     }
-    // }
     const plain = JSON.parse(JSON.stringify(postsData))
-
-    console.log(plain);
-    //console.log(plainPosts)
     res.render('home', {title:"Home", activeUser:req.session.activeUser, posts:plain})
 })
 
@@ -37,7 +25,10 @@ router.get('/dashboard', async(req,res)=>{
     }
     let postsData = await Post.findAll({
         where:{UserId:req.session.activeUser.id},
-        include:[User, Comment],
+        include:[User, {
+            model:Comment,
+            include: User
+        }],
         order:[['createdAt','DESC']]
     });
     let plainPosts = postsData.map(post=>{return post.get({plain:"plain"})})
@@ -55,7 +46,7 @@ router.get('/signup', (req,res)=>{
 
 router.get('/logout', (req,res)=>{
     req.session.activeUser = null;
-    res.redirect('/');
+    res.redirect('/login');
 })
 
 router.get('/newpost', (req,res)=>{

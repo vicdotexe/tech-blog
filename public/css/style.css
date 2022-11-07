@@ -1,8 +1,18 @@
+:root{
+    --button-Color: rgb(56, 106, 163);
+    --hover-color:rgb(42, 131, 233);
+    --button-shadow:1px 2px 4px rgba(49, 49, 49,0.6);
+    --button-border: 1px solid rgb(65, 65, 65);
+}
 nav a{
     margin:5px;
     color:white;
     font-weight: bold;
     font-size: large;
+}
+
+nav a:hover{
+    color: var(--hover-color);
 }
 
 
@@ -11,6 +21,9 @@ nav a{
     padding:5px 10px;
     font-weight: bold;
     color: white;
+    background: var(--button-Color);
+    box-shadow: var(--button-shadow);
+    border: var(--button-border);
 }
 
 .btnsm {
@@ -19,14 +32,32 @@ nav a{
     font-size: small;
     font-weight: bold;
     color: white;
+    background: var(--button-Color);
+    box-shadow: var(--button-shadow);
+    border: var(--button-border);
+}
+
+.btnlg {
+    border-radius: 5px;
+    padding:6px 12px;
+    background: var(--button-Color);
+    font-size:x-large;
+    border: var(--button-border);
+    box-shadow: var(--button-shadow);
 }
 
 .btnsm:hover{
-    filter:  contrast(180%);
+    /* filter:  contrast(180%); */
+    background: var(--hover-color);
 }
 
 .btn:hover{
-    filter:  contrast(180%);
+    /* filter:  contrast(180%); */
+    background: var(--hover-color);
+}
+
+.btnlg:hover{
+    background: var(--hover-color);
 }
 
 input {
@@ -39,4 +70,8 @@ input {
     background: rgba(0,0,0,0);
     padding: 5px;
     outline: none;
+}
+
+.title{
+    border-radius: 0 0 25px 25px;
 }
