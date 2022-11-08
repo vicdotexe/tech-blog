@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {Post,User, Comment} = require('../models');
 const { route } = require('./api');
+const sequelize = require('sequelize');
 
 
 // the home route
@@ -11,7 +12,7 @@ router.get('/home', async(req,res)=>{
             model:Comment,
             include: User
         }],
-        order:[['createdAt','DESC']]
+        order:sequelize.literal('createdAt DESC')
     });
 
     const plain = JSON.parse(JSON.stringify(postsData))
@@ -27,9 +28,10 @@ router.get('/dashboard', async(req,res)=>{
         where:{UserId:req.session.activeUser.id},
         include:[User, {
             model:Comment,
-            include: User
+            include: User,
+            order: sequelize.literal('createdAt ASC')
         }],
-        order:[['createdAt','DESC']]
+        order:sequelize.literal('createdAt DESC')
     });
     let plainPosts = postsData.map(post=>{return post.get({plain:"plain"})})
     res.render('dashboard', {title:"Dashboard", activeUser:req.session.activeUser, posts:plainPosts});
